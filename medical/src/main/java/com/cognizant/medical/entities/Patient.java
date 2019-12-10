@@ -44,6 +44,8 @@ public class Patient {
 	private String state;
 	@Column(name = "pt_zip_code")
 	private String zipCode;
+	@Column(name = "pt_status")
+	private boolean status;
 
 	public Patient() {
 		super();
@@ -51,7 +53,7 @@ public class Patient {
 
 	public Patient(int id, String firstName, String lastName, int age, String gender, Date dateOfBirth,
 			String contactNo, String altContactNo, String email, String password, String address1, String address2,
-			String city, String state, String zipCode) {
+			String city, String state, String zipCode, boolean status) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -68,6 +70,15 @@ public class Patient {
 		this.city = city;
 		this.state = state;
 		this.zipCode = zipCode;
+		this.status = status;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	public int getId() {

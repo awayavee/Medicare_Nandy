@@ -1,4 +1,4 @@
-package com.cognizant.medical.entities;
+package com.cognizant.medicareservice.entities;
 
 import java.util.Date;
 import java.util.Set;
@@ -56,7 +56,7 @@ public class Doctor {
 	private String workHours;
 	@Column(name = "dc_hospital_name")
 	private String hospitalName;
-	@Column(name="dc_status")
+	@Column(name = "dc_status")
 	private boolean status;
 	@ManyToMany
 	@JoinTable(name = "doctor_medicare_services", joinColumns = @JoinColumn(name = "dms_dc_id"), inverseJoinColumns = @JoinColumn(name = "dms_ms_id"))
@@ -65,7 +65,6 @@ public class Doctor {
 	public Doctor() {
 		super();
 	}
-
 
 	public Doctor(int id, String firstName, String lastName, int age, String gender, Date dateOfBirth, String contactNo,
 			String altContactNo, String email, String password, String address1, String address2, String city,
@@ -94,7 +93,6 @@ public class Doctor {
 		this.status = status;
 		this.medicareServiceList = medicareServiceList;
 	}
-
 
 	public int getId() {
 		return id;
@@ -260,11 +258,9 @@ public class Doctor {
 		return status;
 	}
 
-
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-
 
 	@Override
 	public String toString() {

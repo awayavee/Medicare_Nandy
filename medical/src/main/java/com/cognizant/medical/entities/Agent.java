@@ -44,14 +44,17 @@ public class Agent {
 	private String state;
 	@Column(name = "ag_zip_code")
 	private String zipCode;
-
+	@Column(name="ad_status")
+	private boolean status;
 	public Agent() {
 		super();
 	}
 
+
+
 	public Agent(int id, String firstName, String lastName, int age, String gender, Date dateOfBirth, String contactNo,
 			String altContactNo, String email, String password, String address1, String address2, String city,
-			String state, String zipCode) {
+			String state, String zipCode, boolean status) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -68,7 +71,10 @@ public class Agent {
 		this.city = city;
 		this.state = state;
 		this.zipCode = zipCode;
+		this.status = status;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -189,6 +195,18 @@ public class Agent {
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+
 
 	@Override
 	public String toString() {

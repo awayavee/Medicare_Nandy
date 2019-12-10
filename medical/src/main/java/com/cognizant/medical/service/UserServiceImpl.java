@@ -7,6 +7,7 @@ import com.cognizant.medical.entities.User;
 import com.cognizant.medical.exception.UserAlreadyExistsException;
 import com.cognizant.medical.reporities.UserRepository;
 import com.cognizant.medical.security.AppUserDetailsService;
+
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
@@ -21,7 +22,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean userExistingStatus(String username) {
-		return userRepository.findByUsername(username)==null?true:false;
+		return userRepository.findByUsername(username) == null ? true : false;
+	}
+
+	@Override
+	public User getUser(String username) {
+		return userRepository.findByUsername(username);
 	}
 
 }

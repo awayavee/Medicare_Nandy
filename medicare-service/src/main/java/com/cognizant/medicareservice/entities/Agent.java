@@ -1,76 +1,59 @@
-package com.cognizant.medical.entities;
+package com.cognizant.medicareservice.entities;
 
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "doctor")
-public class Doctor {
+@Table(name = "agent")
+public class Agent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "dc_id")
+	@Column(name = "ag_id")
 	private int id;
-	@Column(name = "dc_first_name")
+	@Column(name = "ag_first_name")
 	private String firstName;
-	@Column(name = "dc_last_name")
+	@Column(name = "ag_last_name")
 	private String lastName;
-	@Column(name = "dc_age")
+	@Column(name = "ag_age")
 	private int age;
-	@Column(name = "dc_gender")
+	@Column(name = "ag_gender")
 	private String gender;
-	@Column(name = "dc_date_of_birth")
+	@Column(name = "ag_date_of_birth")
 	private Date dateOfBirth;
-	@Column(name = "dc_contact_no")
+	@Column(name = "ag_contact_no")
 	private String contactNo;
-	@Column(name = "dc_alt_contact_no")
+	@Column(name = "ag_alt_contact_no")
 	private String altContactNo;
-	@Column(name = "dc_email")
+	@Column(name = "ag_email")
 	private String email;
-	@Column(name = "dc_password")
+	@Column(name = "ag_password")
 	private String password;
-	@Column(name = "dc_address_1")
+	@Column(name = "ag_address_1")
 	private String address1;
-	@Column(name = "dc_address_2")
+	@Column(name = "ag_address_2")
 	private String address2;
-	@Column(name = "dc_city")
+	@Column(name = "ag_city")
 	private String city;
-	@Column(name = "dc_state")
+	@Column(name = "ag_state")
 	private String state;
-	@Column(name = "dc_zip_code")
+	@Column(name = "ag_zip_code")
 	private String zipCode;
-	@Column(name = "dc_degree")
-	private String degree;
-	@Column(name = "dc_speciality")
-	private String speciality;
-	@Column(name = "dc_work_hours")
-	private String workHours;
-	@Column(name = "dc_hospital_name")
-	private String hospitalName;
-	@Column(name="dc_status")
+	@Column(name = "ad_status")
 	private boolean status;
-	@ManyToMany
-	@JoinTable(name = "doctor_medicare_services", joinColumns = @JoinColumn(name = "dms_dc_id"), inverseJoinColumns = @JoinColumn(name = "dms_ms_id"))
-	private Set<MedicareServices> medicareServiceList;
 
-	public Doctor() {
+	public Agent() {
 		super();
 	}
 
-
-	public Doctor(int id, String firstName, String lastName, int age, String gender, Date dateOfBirth, String contactNo,
+	public Agent(int id, String firstName, String lastName, int age, String gender, Date dateOfBirth, String contactNo,
 			String altContactNo, String email, String password, String address1, String address2, String city,
-			String state, String zipCode, String degree, String speciality, String workHours, String hospitalName,
-			boolean status, Set<MedicareServices> medicareServiceList) {
+			String state, String zipCode, boolean status) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -87,14 +70,8 @@ public class Doctor {
 		this.city = city;
 		this.state = state;
 		this.zipCode = zipCode;
-		this.degree = degree;
-		this.speciality = speciality;
-		this.workHours = workHours;
-		this.hospitalName = hospitalName;
 		this.status = status;
-		this.medicareServiceList = medicareServiceList;
 	}
-
 
 	public int getId() {
 		return id;
@@ -216,64 +193,20 @@ public class Doctor {
 		this.zipCode = zipCode;
 	}
 
-	public String getDegree() {
-		return degree;
-	}
-
-	public void setDegree(String degree) {
-		this.degree = degree;
-	}
-
-	public String getSpeciality() {
-		return speciality;
-	}
-
-	public void setSpeciality(String speciality) {
-		this.speciality = speciality;
-	}
-
-	public String getWorkHours() {
-		return workHours;
-	}
-
-	public void setWorkHours(String workHours) {
-		this.workHours = workHours;
-	}
-
-	public String getHospitalName() {
-		return hospitalName;
-	}
-
-	public void setHospitalName(String hospitalName) {
-		this.hospitalName = hospitalName;
-	}
-
-	public Set<MedicareServices> getMedicareServiceList() {
-		return medicareServiceList;
-	}
-
-	public void setMedicareServiceList(Set<MedicareServices> medicareServiceList) {
-		this.medicareServiceList = medicareServiceList;
-	}
-
 	public boolean isStatus() {
 		return status;
 	}
-
 
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Doctor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", gender="
+		return "Agent [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", gender="
 				+ gender + ", dateOfBirth=" + dateOfBirth + ", contactNo=" + contactNo + ", altContactNo="
 				+ altContactNo + ", email=" + email + ", password=" + password + ", address1=" + address1
-				+ ", address2=" + address2 + ", city=" + city + ", state=" + state + ", zipCode=" + zipCode
-				+ ", degree=" + degree + ", speciality=" + speciality + ", workHours=" + workHours + ", hospitalName="
-				+ hospitalName + ", medicareServiceList=" + medicareServiceList + "]";
+				+ ", address2=" + address2 + ", city=" + city + ", state=" + state + ", zipCode=" + zipCode + "]";
 	}
 
 }

@@ -29,5 +29,9 @@ public class UserController {
 	public boolean userExistingStatus(@PathVariable String username) {
 		return userService.userExistingStatus(username);
 	}
+	@GetMapping("/getuser/{username}")
+	public User getUser(@PathVariable String username) {
+		return userService.getUser(username);
+	}
 	
 }

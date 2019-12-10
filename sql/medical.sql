@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `medical`.`patient` (
   `pt_city` VARCHAR(50) NOT NULL,
   `pt_state` VARCHAR(50) NOT NULL,
   `pt_zip_code` DECIMAL(10) NOT NULL,
+   `pt_status` tinyint(1) NULL,
   PRIMARY KEY (`pt_id`))
 ENGINE = InnoDB;
 
@@ -63,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `medical`.`doctor` (
   `dc_speciality` VARCHAR(50) NOT NULL,
   `dc_work_hours` VARCHAR(100) NOT NULL,
   `dc_hospital_name` VARCHAR(100) NOT NULL,
+   `dc_status` tinyint(1) NULL,
   `dc_ms_id` DECIMAL(10) NULL,
   PRIMARY KEY (`dc_id`))
 ENGINE = InnoDB;
@@ -87,6 +89,7 @@ CREATE TABLE IF NOT EXISTS `medical`.`agent` (
   `ag_city` VARCHAR(50) NOT NULL,
   `ag_state` VARCHAR(50) NOT NULL,
   `ag_zip_code` DECIMAL(10) NOT NULL,
+   `ag_status` tinyint(1) NULL,
   PRIMARY KEY (`ag_id`))
 ENGINE = InnoDB;
 
@@ -172,6 +175,7 @@ CREATE TABLE IF NOT EXISTS `medical`.`admin` (
   `ad_alt_contact_no` VARCHAR(10) NULL,
   `ad_email` VARCHAR(50) NOT NULL,
   `ad_password` VARCHAR(15) NOT NULL,
+   `ad_status` tinyint(1) NULL,
   PRIMARY KEY (`ad_id`))
 ENGINE = InnoDB;
 

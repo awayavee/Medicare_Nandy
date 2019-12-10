@@ -1,4 +1,4 @@
-package com.cognizant.medical.security;
+package com.cognizant.medicareservice.security;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,14 +13,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.cognizant.medical.entities.Doctor;
-import com.cognizant.medical.entities.MedicareServices;
-import com.cognizant.medical.entities.Role;
-import com.cognizant.medical.entities.User;
-import com.cognizant.medical.exception.UserAlreadyExistsException;
-import com.cognizant.medical.reporities.MedicareServicesRepository;
-import com.cognizant.medical.reporities.RoleRepository;
-import com.cognizant.medical.reporities.UserRepository;
+import com.cognizant.medicareservice.entities.Doctor;
+import com.cognizant.medicareservice.entities.Role;
+import com.cognizant.medicareservice.entities.User;
+import com.cognizant.medicareservice.exception.UserAlreadyExistsException;
+import com.cognizant.medicareservice.reporities.MedicareServicesRepository;
+import com.cognizant.medicareservice.reporities.RoleRepository;
+import com.cognizant.medicareservice.reporities.UserRepository;
 
 @Service
 public class AppUserDetailsService implements UserDetailsService {
@@ -70,6 +69,7 @@ public class AppUserDetailsService implements UserDetailsService {
 		User user = new User();
 		user = userRepository.findByUsername(newUser.getUsername());
 		if (user == null) {
+
 			if (newUser.getAdmin() != null) {
 				newUser.setAdmin(newUser.getAdmin());
 				newUser.setDoctor(null);

@@ -1,4 +1,4 @@
-package com.cognizant.medical.entities;
+package com.cognizant.medicareservice.entities;
 
 import java.util.Date;
 
@@ -54,6 +54,14 @@ public class Admin {
 		this.altContactNo = altContactNo;
 		this.email = email;
 		this.password = password;
+		this.status = status;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
@@ -137,21 +145,11 @@ public class Admin {
 		this.password = password;
 	}
 
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
 	@Override
 	public String toString() {
 		return "Admin [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", gender="
 				+ gender + ", dateOfBirth=" + dateOfBirth + ", contactNo=" + contactNo + ", altContactNo="
-				+ altContactNo + ", email=" + email + ", password=" + password + ", status=" + status + "]";
+				+ altContactNo + ", email=" + email + ", password=" + password + "]";
 	}
-
-
 
 }
