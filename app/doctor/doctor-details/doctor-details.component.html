@@ -1,0 +1,35 @@
+<table class="table table-bordered" border="0" width="90%" cellspacing="2" cellpadding="8" align="center">
+    <tbody>
+        <tr>
+            <th class="title" style="text-align: center; width: 98%;" colspan="7" align="center">Doctors</th>
+        </tr>
+        <tr>
+            <th class="title" style="text-align: left; width: 14.9142%;">Name</th>
+            <th class="title" style="text-align: left; width: 12.0858%;">Degree</th>
+            <th class="title" style="text-align: left; width: 9%;">Hospital Name</th>
+            <th class="title" style="text-align: left; width: 26%;">Contact No. / E-mail</th>
+            <th class="title" style="text-align: left; width: 26%;">Specialization / Area of Interest</th>
+            <th class="title" style="text-align: left; width: 10%;">Edit</th>
+            <th class="title" style="text-align: left; width: 10%;">Status</th>
+        </tr>
+        <tr *ngFor="let doctor of doctors">
+            <td style="text-align: left; width: 14.9142%;"><img
+                    src="https://previews.123rf.com/images/tuktukdesign/tuktukdesign1704/tuktukdesign170400032/76258396-female-doctor-icon-physician-person-with-stethoscope-and-cross-profile-avatar-in-glyph-pictogram-vec.jpg"
+                    width="100" height="100" /><br /> {{doctor.firstName}} {{doctor.lastName}}</td>
+            <td style="text-align: left; width: 12.0858%;">{{doctor.degree}}</td>
+            <td style="text-align: left; width: 9%;">
+                <p>{{doctor.hospitalName}}</p>
+            </td>
+            <td style="text-align: left; width: 26%;">
+                <p>{{doctor.contactNo}}</p>
+                <p>{{doctor.altContactNo}} </p>
+                {{doctor.email}}
+            </td>
+            <td style="text-align: left; width: 36%;">{{doctor.speciality}}</td>
+            <td><a [routerLink]="['/edit/doctor',doctor.id]" class="text_red">Edit</a></td>
+            <!-- <td><a (click)=changeStatus(doctor.id) class="btn btn-danger" >Change Status</a></td> -->
+            <td *ngIf="!doctor.status"><a (click)=changeStatus(doctor.id) class="btn btn-success">Activate</a></td>
+            <td *ngIf="doctor.status"> <a (click)=changeStatus(doctor.id) class="btn btn-danger">Deactivate</a></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,88 @@
+<div class="row justify-content-center mt-5">
+    <div class="col col-md-8 col-lg-8 col-sm-12">
+        <div class="card">
+            <div class="card-header">Appointment Booking</div>
+            <div class="card-body">
+
+                <div class="alert alert-success" *ngIf="submitStatus">Booking Request Successfull !!</div>
+                <div *ngIf="submitStatus"><a routerLink="/appointmenthistory">Check Booking History</a></div>
+                <form [formGroup]="appointmentBookingForm" (submit)="onSignAppointmentBookingSubmit()" *ngIf="!submitStatus">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="firstname">First Name</label>
+                                <input type="text" name="firstname" formControlName="firstname" class="form-control">
+                                <span class="validation-error"
+                                    *ngIf="firstname.touched && firstname.hasError('required')">First name cannot be
+                                    empty</span>
+                                <span class="validation-error" *ngIf="firstname.hasError('maxlength')">Firstname cannot
+                                    exceed 50 characters.</span>
+                                <span class="validation-error" *ngIf="firstname.hasError('pattern')">Special Characters
+                                    are not allowed</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" name="firstname" formControlName="lastname" class="form-control">
+                                <span class="validation-error"
+                                    *ngIf="lastname.touched && lastname.hasError('required')">Last name cannot be
+                                    empty</span>
+                                <span class="validation-error" *ngIf="lastname.hasError('maxlength')">Lastname cannot
+                                    exceed 50 characters.</span>
+                                <span class="validation-error" *ngIf="lastname.hasError('pattern')">Special Characters
+                                    are not allowed</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="appointmentDate">Date Of Appointment</label>
+                                <input type="date" name="appointmentDate" id="appointmentDate" class="form-control"
+                                    formControlName="appointmentDate">
+                                <span class="validation-error"
+                                    *ngIf="appointmentDate.touched && appointmentDate.hasError('required')">Date Of
+                                    Appointment cannot
+                                    be
+                                    empty</span>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+                                <label for="disease">Disease</label>
+                                <input type="text" name="disease" formControlName="disease" class="form-control">
+                                <span class="validation-error"
+                                    *ngIf="disease.touched && disease.hasError('required')">Last name cannot be
+                                    empty</span>
+                                <span class="validation-error" *ngIf="disease.hasError('maxlength')">Lastname cannot
+                                    exceed 50 characters.</span>
+                                <span class="validation-error" *ngIf="disease.hasError('pattern')">Special Characters
+                                    are not allowed</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                            <div class="form-group">
+
+                                <label for="doctorId">Select Doctor</label>
+                                <select name="doctorId" formControlName="doctorId" class="form-control">
+                                    <option *ngFor="let doctor of doctors" [value]="doctor.id">
+                                        {{doctor.firstName}} {{doctor.lastName}} ( Doctor Id: {{doctor.id}} )
+                                    </option>
+                                </select>
+
+                                <span class="validation-error"
+                                    *ngIf="doctorId.touched && doctorId.hasError('required')">Doctor must be selected
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <input type="submit" class="btn btn-danger" value="Book Appointment"
+                            [disabled]="!appointmentBookingForm.valid">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
