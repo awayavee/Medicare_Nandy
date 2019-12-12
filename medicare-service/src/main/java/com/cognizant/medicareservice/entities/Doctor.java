@@ -3,6 +3,7 @@ package com.cognizant.medicareservice.entities;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -58,9 +60,13 @@ public class Doctor {
 	private String hospitalName;
 	@Column(name = "dc_status")
 	private boolean status;
-	@ManyToMany
-	@JoinTable(name = "doctor_medicare_services", joinColumns = @JoinColumn(name = "dms_dc_id"), inverseJoinColumns = @JoinColumn(name = "dms_ms_id"))
-	private Set<MedicareServices> medicareServiceList;
+	// @ManyToMany
+	// @JoinTable(name = "doctor_medicare_services", joinColumns = @JoinColumn(name
+	// = "dms_dc_id"), inverseJoinColumns = @JoinColumn(name = "dms_ms_id"))
+	// private Set<MedicareServices> medicareServiceList;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "dc_ms_id")
+	private MedicareServices medicareServices;
 
 	public Doctor() {
 		super();
@@ -69,7 +75,7 @@ public class Doctor {
 	public Doctor(int id, String firstName, String lastName, int age, String gender, Date dateOfBirth, String contactNo,
 			String altContactNo, String email, String password, String address1, String address2, String city,
 			String state, String zipCode, String degree, String speciality, String workHours, String hospitalName,
-			boolean status, Set<MedicareServices> medicareServiceList) {
+			boolean status, MedicareServices medicareServices) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -91,7 +97,7 @@ public class Doctor {
 		this.workHours = workHours;
 		this.hospitalName = hospitalName;
 		this.status = status;
-		this.medicareServiceList = medicareServiceList;
+		this.medicareServices = medicareServices;
 	}
 
 	public int getId() {
@@ -246,12 +252,12 @@ public class Doctor {
 		this.hospitalName = hospitalName;
 	}
 
-	public Set<MedicareServices> getMedicareServiceList() {
-		return medicareServiceList;
+	public MedicareServices getMedicareServices() {
+		return medicareServices;
 	}
 
-	public void setMedicareServiceList(Set<MedicareServices> medicareServiceList) {
-		this.medicareServiceList = medicareServiceList;
+	public void setMedicareServices(MedicareServices medicareServices) {
+		this.medicareServices = medicareServices;
 	}
 
 	public boolean isStatus() {
@@ -269,7 +275,7 @@ public class Doctor {
 				+ altContactNo + ", email=" + email + ", password=" + password + ", address1=" + address1
 				+ ", address2=" + address2 + ", city=" + city + ", state=" + state + ", zipCode=" + zipCode
 				+ ", degree=" + degree + ", speciality=" + speciality + ", workHours=" + workHours + ", hospitalName="
-				+ hospitalName + ", medicareServiceList=" + medicareServiceList + "]";
+				+ hospitalName + ", status=" + status + ", medicareServices=" + medicareServices + "]";
 	}
 
 }
